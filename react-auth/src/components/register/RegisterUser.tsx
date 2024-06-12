@@ -33,7 +33,7 @@ function RegisterUser(props: any) {
     setError("");
 
     try {
-      if(values.password !== values.passwordConfirm) {
+      if(values.senha !== values.senhaConfirm) {
         throw new Error("senhas diferentes")
       }
 
@@ -50,7 +50,7 @@ function RegisterUser(props: any) {
         authState: {
           id: response.data.id,
           email: values.email,
-          name: response.data.name,
+          nome: response.data.nome,
         },
       });
 
@@ -67,9 +67,9 @@ function RegisterUser(props: any) {
   const formik = useFormik({
     initialValues: {
       email: "",
-      name: "",
-      password: "",
-      passwordConfirm: ""
+      nome: "",
+      senha: "",
+      senhaConfirm: ""
     },
     onSubmit,
   });
@@ -93,35 +93,35 @@ function RegisterUser(props: any) {
           </InputWrapper>
           <InputWrapper>
             <StyledInput
-              name="name"
-              value={formik.values.name}
+              name="nome"
+              value={formik.values.nome}
               onChange={formik.handleChange}
               placeholder="Nome"
               clearOnEscape
               size="large"
-              type="name"
+              type="nome"
             />
           </InputWrapper>
           <InputWrapper>
             <StyledInput
-              name="password"
-              value={formik.values.password}
+              name="senha"
+              value={formik.values.senha}
               onChange={formik.handleChange}
               placeholder="Senha"
               clearOnEscape
               size="large"
-              type="password"
+              type="senha"
             />
           </InputWrapper>
           <InputWrapper>
             <StyledInput
-              name="passwordConfirm"
-              value={formik.values.passwordConfirm}
+              name="senhaConfirm"
+              value={formik.values.senhaConfirm}
               onChange={formik.handleChange}
               placeholder="Confirmar Senha"
               clearOnEscape
               size="large"
-              type="passwordConfirm"
+              type="senhaConfirm"
             />
           </InputWrapper>
           <a href="/login/candidato">login Usuario</a>

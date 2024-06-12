@@ -31,6 +31,8 @@ function LoginUser(props: any) {
 
   const navigate = useNavigate();
 
+  console.log('hi');
+
   const onSubmit = async (values: any) => {
     setError("");
 
@@ -40,17 +42,19 @@ function LoginUser(props: any) {
         values
       );
 
-      //salva nos cookies e autentica
+      console.log('response.data :>> ', response.data);
+
       signIn({
         token: response.data.token,
-        expiresIn: 3600,
         tokenType: "Bearer",
+        expiresIn: 3600,
         authState: {
           id: response.data.id,
-          email: values.email,
+          email: response.data.email,
           name: response.data.name,
         },
       });
+
 
       navigate("/");
       // if (response.type == "user") {
@@ -59,6 +63,7 @@ function LoginUser(props: any) {
       //   navigate("/enterprises");
       // }
     } catch (err) {
+      console.log('err :>> ', err);
       if (err && err instanceof AxiosError)
         setError(err.response?.data.message);
       else if (err && err instanceof Error) setError(err.message);
@@ -70,7 +75,7 @@ function LoginUser(props: any) {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
+      senha: "",
     },
     onSubmit,
   });
@@ -94,13 +99,13 @@ function LoginUser(props: any) {
           </InputWrapper>
           <InputWrapper>
             <StyledInput
-              name="password"
-              value={formik.values.password}
+              name="senha"
+              value={formik.values.senha}
               onChange={formik.handleChange}
-              placeholder="Password"
+              placeholder="senha"
               clearOnEscape
               size="large"
-              type="password"
+              type="senha"
             />
           </InputWrapper>
           <a href="/sign-up/usuario">cadastrar novo usuário</a>

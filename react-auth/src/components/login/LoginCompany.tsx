@@ -47,8 +47,9 @@ function LoginCompany(props: any) {
         tokenType: "Bearer",
         authState: {
           id: response.data.id,
-          email: values.email,
-          name: response.data.name,
+          email: response.data.email,
+          nome: response.data.nome,
+          descricao: response.data.descricao,
         },
       });
 
@@ -70,7 +71,7 @@ function LoginCompany(props: any) {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
+      senha: "",
     },
     onSubmit,
   });
@@ -94,13 +95,13 @@ function LoginCompany(props: any) {
           </InputWrapper>
           <InputWrapper>
             <StyledInput
-              name="password"
-              value={formik.values.password}
+              name="senha"
+              value={formik.values.senha}
               onChange={formik.handleChange}
-              placeholder="Password"
+              placeholder="senha"
               clearOnEscape
               size="large"
-              type="password"
+              type="senha"
             />
           </InputWrapper>
           <a href="/sign-up/empresa"> cadastrar nova empresa </a>

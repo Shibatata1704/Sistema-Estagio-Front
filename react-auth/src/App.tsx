@@ -23,13 +23,13 @@ function App() {
         <Route
           path="/"
           element={
-            <RequireAuth loginPath="/login-option">
+            <RequireAuth loginPath="/login/candidato">
               <Home />
             </RequireAuth>
           }
         ></Route>
         <Route path="/login-option" element={<LoginOption />}></Route>
-        <Route path="/login/candidato" element={<LoginUser />}></Route>
+        <Route path="/login/candidato" element={<LoginUser />}></Route> 
         <Route path="/sign-up/usuario" element={<RegisterUser />}></Route>
         <Route path="/login/empresa" element={<LoginCompany />}></Route>
         <Route path="/sign-up/empresa" element={<RegisterCompany />}></Route>
